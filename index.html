@@ -6,28 +6,93 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <style>
+      body {
+        background: #000000; /* Changed to solid black */
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      
+      .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(255, 102, 179, 0.7)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat;
+        background-size: contain;
+        animation: fall 10s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-100vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .container2 {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+      
+      .title {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      #universe, #pinkboard {
+        max-width: 100%;
+      }
+
+      .img {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
   </head>
 
   <body>
-    <!-- <audio autoplay="autopaly">
-      <source src="renxi.mp3" type="audio/mp3" />
-    </audio> -->
-    <!-- 星空html -->
-    <!-- <div> -->
-    <div class="container2">
       <div class="content">
         <canvas id="universe"></canvas>
       </div>
     </div>
-    <!-- </div> -->
+    
     <div class="title">
-      <!-- EDIT HERE -->
-      <h3 class="STARDUST1">2024</h3>
-      <h1 class="STARDUST2">Hua Cong Minh &amp; Nguyen Thi Thanh Hoa</h1>
-      <h3 class="STARDUST3">L O V E <strong>💗</strong> Y O U</h3>
+      <h3 class="STARDUST1">2025</h3>
+      <h1 class="STARDUST2">Công Minh & Thanh Hòa</h1>
+      <h3 class="STARDUST3">L O V E <strong> 💗 </strong> Y O U</h3>
       <img class="img" src="EDIT_ME.png" alt="JUNO_OKYO" />
       <canvas id="pinkboard"></canvas>
     </div>
+
+    <script>
+      function createHearts() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 10000);
+      }
+
+      setInterval(createHearts, 500);
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/main.js"></script>
